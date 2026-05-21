@@ -10,6 +10,16 @@
     </div>
 </div>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <!-- form di contatto -->
 
  @if (session('success'))
@@ -19,26 +29,32 @@
 @endif
 
 
-<form method="POST" action="{{ route('products.store') }}" class="container mt-5"  >
+
+
+<form method="POST" action="{{ route('product.store') }}" class="container mt-5" enctype="multipart/form-data">
 @csrf
 <div class="row justify-content-center">
     <div class="col-12 col-md-6">
         <div class="mb-3">
   <label for="name" class="form-label">nome prodotto</label>
-  <input name="name" class="form-control" type="text" placeholder="Scrivi il nome del prodotto" aria-label="default input example" id="name">
+  <input name="name" class="form-control" type="text" placeholder="Scrivi il nome del prodotto" aria-label="default input example" id="name" value="{{ old('name') }}">
 </div>
 
 <div class="mb-3">
   <label for="description" class="form-label">descrizione</label>
-  <textarea name="description" class="form-control" type="text" id="description" rows="3" placeholder="Scrivi la descrizione del prodotto"></textarea>
+  <textarea name="description" class="form-control" type="text" id="description" rows="3" placeholder="Scrivi la descrizione del prodotto">{{ old('description') }}</textarea>
 </div>
 
 <div class="mb-3">
     <label for="price" class="form-label">prezzo</i></label>
     <div class="form-floating mb-3">
-  <input type="number" class="form-control" id="price" placeholder="0" name="price">
+  <input type="number" class="form-control" id="price" placeholder="0" name="price" value="{{ old('price') }}">
   <label for="price">Prezzo (€)</label>
   </div>
+<div class="mb-3">
+  <label for="formFile" class="form-label">Inserisci immagine</label>
+  <input class="form-control" type="file" id="formFile" name="img">
+</div>
   <button type="submit" class="btn btn-primary btn-sm">Inserisci Prodotto</button>
 
 </div>

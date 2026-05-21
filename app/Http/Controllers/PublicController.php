@@ -11,12 +11,14 @@ class PublicController extends Controller
     return view('welcome');
 }
 public function products() {
-    return view('components.products.prodotti');
+    return view('product.prodotti');
 }
 public function magazzino() {
     $products = Product::all();
-    return view('components.products.magazzino', [
+    return view('product.magazzino', [
         'products' => $products
     ]);
 }
+
+
 }

@@ -5,7 +5,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/',[PublicController::class,'homepage'])->name('home');
-Route::get('/product',[PublicController::class,'products'])->name('products.index');
-Route::get('/magazzino',[PublicController::class,'magazzino'])->name('products');
+Route::get('/product/prodotti',[PublicController::class,'products'])->name('product.prodotti');
+Route::get('/product/magazzino',[PublicController::class,'magazzino'])->name('product.magazzino');
 // SALVATAGGIO PRODOTTO IN DB
-Route::post('/product/create', [ProductController::class, 'store'])->name('products.store');
+Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');

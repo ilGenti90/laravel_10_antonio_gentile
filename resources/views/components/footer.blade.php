@@ -7,8 +7,8 @@
       <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 footer-column">
         <ul>
             <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('products.index') }}">Prodotti</a></li>
-            <li><a href="{{ route('products') }}">Magazzino</a></li>
+            <li><a href="{{ route('product.prodotti') }}">Prodotti</a></li>
+            <li><a href="{{ route('product.magazzino') }}">Magazzino</a></li>
           </ul>
       </div>
 

@@ -14,10 +14,10 @@
           <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('products.index') }}">Prodotti</a>
+          <a class="nav-link" href="{{ route('product.prodotti') }}">Prodotti</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{ route('products') }}">Magazzino</a>
+          <a class="nav-link" href="{{ route('product.magazzino') }}">Magazzino</a>
         </li>
         
       </ul>

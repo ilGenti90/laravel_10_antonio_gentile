@@ -25,8 +25,8 @@
                 <span class="text-white">Il futuro è digitale, il codice è il suo linguaggio.</span>
 
                 <div class="d-flex justify-content-center flex-wrap mt-3">
-                    <button class="btn btn-custom btn-red" onclick="window.location.href='{{ route('products.index') }}'">Scopri di più</button>
-                    <button class="btn btn-custom btn-blue" onclick="window.location.href='{{ route('products.index') }}'">Click Here</button>
+                    <button class="btn btn-custom btn-red" onclick="window.location.href='{{ route('product.prodotti') }}'">Scopri di più</button>
+                    <button class="btn btn-custom btn-blue" onclick="window.location.href='{{ route('product.magazzino') }}'">Click Here</button>
                 </div>
 
             </div>
