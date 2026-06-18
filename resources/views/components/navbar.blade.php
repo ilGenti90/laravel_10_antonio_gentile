@@ -19,6 +19,27 @@
          <li class="nav-item">
           <a class="nav-link" href="{{ route('product.magazzino') }}">Magazzino</a>
         </li>
+        @guest
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('register') }}">Registrati</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">Accedi</a>
+        </li>
+        @endguest
+
+
+        @auth
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Welcome {{ Auth::user()->name }} </a>
+        </li>
+        <li class="nav-item">
+          <form class=" nav-link" method="POST" action="{{ route('logout') }}" class="d-inline">
+            @csrf
+            <button type="submit" class=" btn btn-link nav-link border-0 p-0">Logout</button>
+          </form>
+        </li>
+        @endauth
         
       </ul>
     </div>
