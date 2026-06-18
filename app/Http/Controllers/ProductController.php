@@ -8,6 +8,7 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+    
     public function store (ProductRequest $request){
         $name = $request->name;
         $description = $request->description;
