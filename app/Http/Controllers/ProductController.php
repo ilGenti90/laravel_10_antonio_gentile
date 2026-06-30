@@ -13,7 +13,9 @@ class ProductController extends Controller
         $name = $request->name;
         $description = $request->description;
         $price = $request->price;
-        $img = $request->file('img')->store('img' , 'public');
+        $img = $request->hasFile('img')
+            ? $request->file('img')->store('img', 'public')
+            : 'img/default.jpg';
 
          // Handle file upload if an image is provided
 
@@ -23,6 +25,6 @@ class ProductController extends Controller
         $product->price = $price;
         $product->img = $img;
         $product->save();
-        return redirect()->back()->with('success', 'Prodotto inserito con successo!');
+        return redirect()->back()->with('success', 'Prodotto ' . $request->name . '   inserito con successo!');
     }
 }

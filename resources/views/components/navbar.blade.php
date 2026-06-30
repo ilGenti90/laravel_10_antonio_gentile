@@ -19,6 +19,12 @@
          <li class="nav-item">
           <a class="nav-link" href="{{ route('product.magazzino') }}">Magazzino</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('article.create') }}">Crea Articolo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('article.index') }}">Articoli</a>
+        </li>
         @guest
         <li class="nav-item">
           <a class="nav-link" href="{{ route('register') }}">Registrati</a>
