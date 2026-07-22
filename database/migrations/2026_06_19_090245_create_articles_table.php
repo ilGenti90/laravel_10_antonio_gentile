@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->text('body');
-            $table->string('img')->default('public/img/default.jpg');
+            $table->string('img')->default('img/default.jpg');
         });
     }
 

@@ -4,19 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
 return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-   public function up(): void
-{
-    Schema::table('products', function (Blueprint $table) {
-        $table->string('img')->default('img/default.jpg')->after('price');
-    });
-}
-
+    public function up(): void
+    {
+        Schema::table('products', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable()->after('price');
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -24,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('img');
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
         });
     }
 };
