@@ -50,6 +50,17 @@
   <textarea name="body" class="form-control" type="text" id="body" rows="3" placeholder="Scrivi il corpo dell'articolo">{{ old('body') }}</textarea>
 </div>
 
+<div class="mb-3"> 
+    @foreach ($tags as $tag)
+<div class="form-check">
+  <input class="form-check-input" type="checkbox"  name= "tags[]" value="{{ $tag->id }}" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    {{ $tag->name }}
+  </label>
+</div>
+    @endforeach
+</div>
+
 <div class="mb-3">
   <label for="formFile" class="form-label">Inserisci immagine</label>
   <input class="form-control" type="file" id="formFile" name="img">

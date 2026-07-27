@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\article;
 use Illuminate\Http\Request;
+use App\Models\Tag;
 
 class ArticleController extends Controller
 {
@@ -22,7 +23,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        $tags = Tag::all();
+        return view('article.create', compact('tags'));
     }
 
     /**
@@ -48,6 +50,8 @@ class ArticleController extends Controller
         $article->img = $request->file('img')->store('img', 'public');
         $article->save();
       }
+
+      $article->tags()->attach($request->tags);
        
 
     return redirect()->back()->with('success', 'Articolo ' . $request->title . ' creato con successo!');
@@ -67,7 +71,8 @@ class ArticleController extends Controller
      */
     public function edit(article $article)
     {
-        return view('article.edit', compact('article'));
+        $tags = Tag::all();
+        return view('article.edit', compact('article', 'tags'));
     }
 
     /**
@@ -84,6 +89,8 @@ class ArticleController extends Controller
             : $article->img,
     ]);
 
+    $article->tags()->sync($request->tags);
+
     return redirect()->route('article.index')->with('success', 'Articolo ' . $article->title . ' aggiornato con successo!');
 }
 
@@ -92,9 +99,12 @@ class ArticleController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(article $article)
-    {
+    { 
 
+        $article->tags()->detach();
         $article->delete();
+
+        
 
         return redirect()->route('article.index')->with('success', 'Articolo ' . $article->title . ' eliminato con successo!');
         

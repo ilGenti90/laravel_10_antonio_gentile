@@ -41,6 +41,15 @@
         <h5 class="card-title">{{ $article->title }}</h5>
         <h6 class="card-subtitle mb-2">{{ $article->subtitle }}</h6>
         <p class="card-text text-truncate">{{ $article->body }}</p>
+
+        @if ($article->tags->isNotEmpty())
+            <div class="mb-2">
+                @foreach ($article->tags as $tag)
+                    <span class="badge rounded-pill text-bg-light"> #{{ $tag->name }} </span>
+                @endforeach
+            </div>
+            @endif
+
         <a href="{{ route('article.show', compact('article')) }}" class="btn btn-primary">Dettaglio</a>
         <a href="{{ route('article.edit', compact('article')) }}" class="btn btn-secondary">Modifica</a>
     </div>
